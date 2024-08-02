@@ -85,7 +85,7 @@ const handleLogin = (event) => {
     login.style.display = "none"
     chat.style.display = "flex"
 
-    websocket = new WebSocket("wss://online-chat-chi.vercel.app/")
+    websocket = new WebSocket("ws://localhost:8080")
     websocket.onmessage = processMessage
 }
 
