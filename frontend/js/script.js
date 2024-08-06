@@ -1,11 +1,9 @@
-// login elements 
-
+// login elements
 const login = document.querySelector(".login")
 const loginForm = login.querySelector(".login__form")
 const loginInput = login.querySelector(".login__input")
 
-// chat elements 
-
+// chat elements
 const chat = document.querySelector(".chat")
 const chatForm = chat.querySelector(".chat__form")
 const chatInput = chat.querySelector(".chat__input")
@@ -14,40 +12,39 @@ const chatMessages = chat.querySelector(".chat__messages")
 const colors = [
     "cadetblue",
     "darkgoldenrod",
-    "cronflowerblue",
+    "cornflowerblue",
     "darkkhaki",
     "hotpink",
     "gold"
 ]
 
-const user = { id: "", name: "", color: ""  }
+const user = { id: "", name: "", color: "" }
 
 let websocket
 
 const createMessageSelfElement = (content) => {
     const div = document.createElement("div")
-
     div.classList.add("message--self")
     div.innerHTML = content
-
     return div
 }
 
 const createMessageOtherElement = (content, sender, senderColor) => {
     const div = document.createElement("div")
     const span = document.createElement("span")
-
     div.classList.add("message--other")
-
-    div.classList.add("message--self")
     span.classList.add("message--sender")
     span.style.color = senderColor
-
-    div.appendChild(span)
-
     span.innerHTML = sender
+    div.appendChild(span)
     div.innerHTML += content
+    return div
+}
 
+const createNotificationElement = (content) => {
+    const div = document.createElement("div")
+    div.classList.add("message--notification")
+    div.innerHTML = content
     return div
 }
 
@@ -64,12 +61,16 @@ const scrollScreen = () => {
 }
 
 const processMessage = ({ data }) => {
-    const { userId, userName, userColor, content } = JSON.parse(data)
+    const { type, userId, userName, userColor, content } = JSON.parse(data)
+    let message
 
-    const message = userId == user.id ? createMessageSelfElement(content) 
-    : createMessageOtherElement(content, userName, userColor)
-
-    const element = createMessageOtherElement(content, userName, userColor)
+    if (type === "notification") {
+        message = createNotificationElement(content)
+    } else if (userId === user.id) {
+        message = createMessageSelfElement(content)
+    } else {
+        message = createMessageOtherElement(content, userName, userColor)
+    }
 
     chatMessages.appendChild(message)
     scrollScreen()
@@ -87,12 +88,21 @@ const handleLogin = (event) => {
 
     websocket = new WebSocket("wss://onlinechat-backend.glitch.me")
     websocket.onmessage = processMessage
+
+    websocket.onopen = () => {
+        const notification = {
+            type: "notification",
+            content: `- ${user.name} entrou no chat! - `
+        }
+        websocket.send(JSON.stringify(notification))
+    }
 }
 
 const sendMessage = (event) => {
     event.preventDefault()
 
     const message = {
+        type: "message",
         userId: user.id,
         userName: user.name,
         userColor: user.color,
@@ -100,7 +110,6 @@ const sendMessage = (event) => {
     }
 
     websocket.send(JSON.stringify(message))
-
     chatInput.value = ""
 }
 

@@ -76,6 +76,11 @@ body {
     transition: 0.4s;
 }
 
+.message--notification {
+    justify-self: center;
+    align-self: center;
+}
+
 .chat {
     width: 100%;
     height: 100%;
