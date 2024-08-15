@@ -103,7 +103,7 @@ const optionBg = (option) => {
         editBtn.style.fontWeight = "bold"
 
     } if (option === "op2") {
-        body.style.background = 'url("../images/pinkBg.png")'
+        body.style.background = 'url("../images/pinkBg.jpg")'
         notification.style.color = "black"
         notification.style.fontWeight = "bold"
         boxEdit.style.display = "none"
