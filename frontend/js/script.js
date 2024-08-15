@@ -113,8 +113,10 @@ const optionBg = (option) => {
         boxEdit.style.display = "none"
         editBtn.style.color = "white"
         editBtn.style.fontWeight = "bold"
-        self.style.backgroundColor = "white"
-        selfDark.style.backgroundColor = "white"
+        self.style.backgroundColor = "#f2f2f2"
+        selfDark.style.backgroundColor = "#f2f2f2"
+        self.style.color = "#000000"
+        selfDark.style.color = "#000000"
 
     } if (option === "op2") {
         body.style.background = 'url("../images/pinkBg.jpg")'
@@ -124,8 +126,8 @@ const optionBg = (option) => {
         editBtn.style.color = "black"
         editBtn.style.fontWeight = "bold"
         self.style.backgroundColor = "#121212"
-        self.style.color = "white"
-        selfDark.style.backgroundColor = "black"
+        self.style.color = "#f2f2f2"
+        selfDark.style.backgroundColor = "#121212"
 
              
     } if (option === "op3") {
@@ -136,8 +138,8 @@ const optionBg = (option) => {
         editBtn.style.color = "black"
         editBtn.style.fontWeight = "bold"
         self.style.backgroundColor = "#121212"
-        self.style.color = "white"
-        selfDark.style.backgroundColor = "black"
+        self.style.color = "#f2f2f2"
+        selfDark.style.backgroundColor = "#121212"
     }
 
 }
