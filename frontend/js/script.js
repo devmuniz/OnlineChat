@@ -24,7 +24,15 @@ let websocket
 
 const createMessageSelfElement = (content) => {
     const div = document.createElement("div")
-    div.classList.add("message--self")
+    const body = document.getElementsByTagName("body")[0]
+    const backgroundBody = body.style.background
+
+    if (backgroundBody.includes("catBg.jpg") || backgroundBody.includes("pinkBg.jpg")) {
+        div.classList.add("message--selfDark") 
+    } else {
+        div.classList.add("message--self") 
+    }
+
     div.innerHTML = content
     return div
 }
@@ -94,6 +102,10 @@ const optionBg = (option) => {
     let notification = document.querySelector(".message--notification")
     const boxEdit = document.querySelector(".edit_background")
     let editBtn = document.querySelector(".edit_button")
+    const self = document.querySelector(".message--self")
+    const selfDark = document.querySelector(".message--selfDark")
+
+
     if (option === "op1") {
         body.style.background = 'url("../images/background.png")'
         notification.style.color = "white"
@@ -101,6 +113,8 @@ const optionBg = (option) => {
         boxEdit.style.display = "none"
         editBtn.style.color = "white"
         editBtn.style.fontWeight = "bold"
+        self.style.backgroundColor = "white"
+        selfDark.style.backgroundColor = "white"
 
     } if (option === "op2") {
         body.style.background = 'url("../images/pinkBg.jpg")'
@@ -109,6 +123,10 @@ const optionBg = (option) => {
         boxEdit.style.display = "none"
         editBtn.style.color = "black"
         editBtn.style.fontWeight = "bold"
+        self.style.backgroundColor = "#121212"
+        self.style.color = "white"
+        selfDark.style.backgroundColor = "black"
+
              
     } if (option === "op3") {
         body.style.background = 'url("../images/catBg.jpg")'
@@ -117,6 +135,9 @@ const optionBg = (option) => {
         boxEdit.style.display = "none"
         editBtn.style.color = "black"
         editBtn.style.fontWeight = "bold"
+        self.style.backgroundColor = "#121212"
+        self.style.color = "white"
+        selfDark.style.backgroundColor = "black"
     }
 
 }
