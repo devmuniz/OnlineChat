@@ -95,7 +95,7 @@ const optionBg = (option) => {
     const boxEdit = document.querySelector(".edit_background")
     let editBtn = document.querySelector(".edit_button")
     if (option === "op1") {
-        body.style.background = "url(/frontend/images/background.png)"
+        body.style.background = 'url("../images/background.png")'
         notification.style.color = "white"
         notification.style.fontWeight = "none"
         boxEdit.style.display = "none"
@@ -103,7 +103,7 @@ const optionBg = (option) => {
         editBtn.style.fontWeight = "bold"
 
     } if (option === "op2") {
-        body.style.background = "url(/frontend/images/pinkBg.jpg)"
+        body.style.background = 'url("../images/pinkBg.png")'
         notification.style.color = "black"
         notification.style.fontWeight = "bold"
         boxEdit.style.display = "none"
@@ -111,7 +111,7 @@ const optionBg = (option) => {
         editBtn.style.fontWeight = "bold"
              
     } if (option === "op3") {
-        body.style.background = "url(/frontend/images/catBg.jpg)"
+        body.style.background = 'url("../images/catBg.jpg")'
         notification.style.color = "black"
         notification.style.fontWeight = "bold"
         boxEdit.style.display = "none"
