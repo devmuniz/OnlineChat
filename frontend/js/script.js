@@ -98,51 +98,55 @@ const processMessage = ({ data }) => {
 }
 
 const optionBg = (option) => {
-    let body = document.getElementsByTagName("body")[0]
-    const notification = document.querySelector(".message--notification")
-    const boxEdit = document.querySelector(".edit_background")
-    const editBtn = document.querySelector(".edit_button")
-    const self = document.querySelector(".message--self")
-    const selfDark = document.querySelector(".message--selfDark")
+    let body = document.getElementsByTagName("body")[0];
+    const notifications = document.querySelectorAll(".message--notification"); // Seleciona todas as notificações existentes
+    const boxEdit = document.querySelector(".edit_background");
+    const editBtn = document.querySelector(".edit_button");
+    const self = document.querySelector(".message--self");
+    const selfDark = document.querySelector(".message--selfDark");
 
+    let notificationColor, selfBgColor, selfTextColor;
 
     if (option === "op1") {
-        body.style.background = 'url("../images/background.png")'
-        notification.style.color = "white"
-        notification.style.fontWeight = "none"
-        boxEdit.style.display = "none"
-        editBtn.style.color = "white"
-        editBtn.style.fontWeight = "bold"
-        self.style.backgroundColor = "#f2f2f2"
-        selfDark.style.backgroundColor = "#f2f2f2"
-        self.style.color = "#000000"
-        selfDark.style.color = "#000000"
-
-    } if (option === "op2") {
-        body.style.background = 'url("../images/pinkBg.jpg")'
-        boxEdit.style.display = "none"
-        editBtn.style.color = "black"
-        editBtn.style.fontWeight = "bold"
-        self.style.backgroundColor = "#121212"
-        self.style.color = "#f2f2f2"
-        selfDark.style.backgroundColor = "#121212"
-        notification.style.color = "black"
-        notification.style.fontWeight = "bold"
-
-             
-    } if (option === "op3") {
-        body.style.background = 'url("../images/catBg.jpg")'
-        notification.style.color = "black"
-        notification.style.fontWeight = "bold"
-        boxEdit.style.display = "none"
-        editBtn.style.color = "black"
-        editBtn.style.fontWeight = "bold"
-        self.style.backgroundColor = "#121212"
-        self.style.color = "#f2f2f2"
-        selfDark.style.backgroundColor = "#121212"
+        body.style.background = 'url("../images/background.png")';
+        notificationColor = "white";
+        selfBgColor = "#f2f2f2";
+        selfTextColor = "#000000";
+        editBtn.style.color = "white";
+    } 
+    else if (option === "op2") {
+        body.style.background = 'url("../images/pinkBg.jpg")';
+        notificationColor = "black";
+        selfBgColor = "#121212";
+        selfTextColor = "#f2f2f2";
+        editBtn.style.color = "black";
+    } 
+    else if (option === "op3") {
+        body.style.background = 'url("../images/catBg.jpg")';
+        notificationColor = "black";
+        selfBgColor = "#121212";
+        selfTextColor = "#f2f2f2";
+        editBtn.style.color = "black";
     }
 
-}
+    notifications.forEach(notification => {
+        notification.style.color = notificationColor;
+        notification.style.fontWeight = "bold";
+    });
+
+    if (self) {
+        self.style.backgroundColor = selfBgColor;
+        self.style.color = selfTextColor;
+    }
+    if (selfDark) {
+        selfDark.style.backgroundColor = selfBgColor;
+        selfDark.style.color = selfTextColor;
+    }
+
+    boxEdit.style.display = "none";
+    editBtn.style.fontWeight = "bold";
+};
+
 
 
 const handleLogin = (event) => {
