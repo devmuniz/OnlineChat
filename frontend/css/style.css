@@ -263,3 +263,45 @@ body {
 }
 
 
+/* Estilos existentes aqui */
+
+/* Media Queries para Responsividade */
+@media only screen and (max-width: 768px) {
+    .edit_background {
+        width: 80%;
+        height: 40%;
+    }
+
+    .optionBg1, .optionBg2, .optionBg3 {
+        width: 75%;
+        height: 70%;
+        margin-top: 25%;
+        background-size: cover;
+    }
+
+    .spanBg {
+        font-size: 0.9rem;
+        margin-left: 5%;
+        margin-top: 3%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .edit_background {
+        width: 80%;
+        height: 30%;
+    }
+
+    .optionBg1, .optionBg2, .optionBg3 {
+        width: 75%;
+        height: 70%;
+        margin-top: 25%;
+        background-size: cover;
+    }
+
+    .spanBg {
+        font-size: 0.9rem;
+        margin-left: 5%;
+        margin-top: 3%;
+    }
+}
