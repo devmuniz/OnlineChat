@@ -58,10 +58,10 @@ const createNotificationElement = (content) => {
 
     
     if (backgroundBody.includes("catBg.jpg") || backgroundBody.includes("pinkBg.jpg")) {
-        div.style.color = "black"
+        div.style.color = "#000000"
         div.style.fontWeight = "bold"
     } else {
-        div.style.color = "white"  
+        div.style.color = "#FFFFFF"  
     }
 
     div.innerHTML = content
@@ -99,9 +99,9 @@ const processMessage = ({ data }) => {
 
 const optionBg = (option) => {
     let body = document.getElementsByTagName("body")[0]
-    let notification = document.querySelector(".message--notification")
+    const notification = document.querySelector(".message--notification")
     const boxEdit = document.querySelector(".edit_background")
-    let editBtn = document.querySelector(".edit_button")
+    const editBtn = document.querySelector(".edit_button")
     const self = document.querySelector(".message--self")
     const selfDark = document.querySelector(".message--selfDark")
 
@@ -120,14 +120,14 @@ const optionBg = (option) => {
 
     } if (option === "op2") {
         body.style.background = 'url("../images/pinkBg.jpg")'
-        notification.style.color = "black"
-        notification.style.fontWeight = "bold"
         boxEdit.style.display = "none"
         editBtn.style.color = "black"
         editBtn.style.fontWeight = "bold"
         self.style.backgroundColor = "#121212"
         self.style.color = "#f2f2f2"
         selfDark.style.backgroundColor = "#121212"
+        notification.style.color = "black"
+        notification.style.fontWeight = "bold"
 
              
     } if (option === "op3") {
