@@ -42,11 +42,24 @@ const createMessageOtherElement = (content, sender, senderColor) => {
 }
 
 const createNotificationElement = (content) => {
+    const body = document.getElementsByTagName("body")[0]
+    const backgroundBody = body.style.background
+
     const div = document.createElement("div")
     div.classList.add("message--notification")
+
+    
+    if (backgroundBody.includes("catBg.jpg") || backgroundBody.includes("pinkBg.jpg")) {
+        div.style.color = "black"
+        div.style.fontWeight = "bold"
+    } else {
+        div.style.color = "white"  
+    }
+
     div.innerHTML = content
     return div
 }
+
 
 const getRandomColor = () => {
     const randomIndex = Math.floor(Math.random() * colors.length)
@@ -75,6 +88,39 @@ const processMessage = ({ data }) => {
     chatMessages.appendChild(message)
     scrollScreen()
 }
+
+const optionBg = (option) => {
+    let body = document.getElementsByTagName("body")[0]
+    let notification = document.querySelector(".message--notification")
+    const boxEdit = document.querySelector(".edit_background")
+    let editBtn = document.querySelector(".edit_button")
+    if (option === "op1") {
+        body.style.background = "url(/frontend/images/background.png)"
+        notification.style.color = "white"
+        notification.style.fontWeight = "none"
+        boxEdit.style.display = "none"
+        editBtn.style.color = "white"
+        editBtn.style.fontWeight = "bold"
+
+    } if (option === "op2") {
+        body.style.background = "url(/frontend/images/pinkBg.jpg)"
+        notification.style.color = "black"
+        notification.style.fontWeight = "bold"
+        boxEdit.style.display = "none"
+        editBtn.style.color = "black"
+        editBtn.style.fontWeight = "bold"
+             
+    } if (option === "op3") {
+        body.style.background = "url(/frontend/images/catBg.jpg)"
+        notification.style.color = "black"
+        notification.style.fontWeight = "bold"
+        boxEdit.style.display = "none"
+        editBtn.style.color = "black"
+        editBtn.style.fontWeight = "bold"
+    }
+
+}
+
 
 const handleLogin = (event) => {
     event.preventDefault()
@@ -112,6 +158,25 @@ const sendMessage = (event) => {
     websocket.send(JSON.stringify(message))
     chatInput.value = ""
 }
+
+const editButton = () => {
+    const boxEdit = document.querySelector(".edit_background")
+    if (boxEdit.classList.contains("show")) {
+      boxEdit.classList.remove("show")
+      setTimeout(() => {
+        boxEdit.style.display = "none"
+      }, 300); 
+    } else {
+      boxEdit.style.display = "flex"
+      setTimeout(() => {
+        boxEdit.classList.add("show")
+      }, 10); 
+    }
+  };
+
+
+
+
 
 loginForm.addEventListener("submit", handleLogin)
 chatForm.addEventListener("submit", sendMessage)

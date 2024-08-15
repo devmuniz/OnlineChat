@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
 * {
     margin: 0;
     padding: 0;
@@ -78,7 +78,14 @@ body {
 
 .message--notification {
     justify-self: center;
+    align-self: center;    
+
+}
+
+.message--notificationDark {
+    justify-self: center;
     align-self: center;
+    color: black;
 }
 
 .chat {
@@ -162,3 +169,89 @@ body {
     font-weight: 700;
     color: cadetblue;
 }
+
+.edit_button { 
+    position: absolute;
+    align-self: end;
+    margin: 20px 20px 0px 0px;
+    background: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.edit_background { 
+    position: absolute;
+    height: 40%;
+    width: 40%;
+    background-color: #212121;
+    align-self: center;
+    justify-self: center;
+    display: none;
+    flex-direction: row;
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.edit_background.show {
+    display: flex;
+    opacity: 1;
+}
+
+.divop {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.optionBg1 {
+    margin-top: 10%;
+    width: 75%;
+    height: 75%;
+    background-image: url(/frontend/images/background.png);
+    background-size: 300px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.optionBg2 {
+    margin-top: 10%;
+    width: 75%;
+    height: 75%;
+    background-image: url(/frontend/images/pinkBg.jpg);
+    background-size: 300px;
+    border: none;
+    border-radius: 5px;
+}
+
+.optionBg3 {
+    margin-top: 10%;
+    width: 75%;
+    height: 75%;
+    background-image: url(/frontend/images/catBg.jpg);
+    background-size: 300px;
+    border: none;
+    border-radius: 5px;
+}
+
+.spanBg {
+    position: absolute;
+    margin-left: 2%;
+    margin-top: 2%;
+    font-weight: 600;
+}
+
+.edit_background > div > button {
+    cursor: pointer;
+}
+
+.edit_background > div > button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.5s;
+}
+
+
